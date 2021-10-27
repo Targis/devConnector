@@ -8,6 +8,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  CLEAR_PROFILE,
 } from './types'
 import setAuthToken from '../utils/setAuthToken'
 
@@ -18,7 +19,7 @@ export const loadUser = () => async (dispatch) => {
   }
 
   try {
-    const res = await axios.get('api/auth')
+    const res = await axios.get('/api/auth')
 
     dispatch({
       type: USER_LOADED,
@@ -101,5 +102,6 @@ export const login =
 
 // Logout / Clear Profile
 export const logout = () => (dispatch) => {
+  dispatch({ type: CLEAR_PROFILE })
   dispatch({ type: LOGOUT })
 }
