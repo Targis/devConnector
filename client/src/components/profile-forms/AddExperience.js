@@ -11,7 +11,7 @@ const AddExperience = ({ addExperience, history }) => {
     location: '',
     from: '',
     to: '',
-    current: '',
+    current: false,
     description: '',
   })
 
@@ -19,7 +19,8 @@ const AddExperience = ({ addExperience, history }) => {
 
   const { company, title, location, from, to, current, description } = formData
 
-  const onChange = (e) => setFormData({ [e.target.name]: e.target.value })
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value })
 
   return (
     <Fragment>
@@ -70,6 +71,7 @@ const AddExperience = ({ addExperience, history }) => {
           <input
             type="date"
             name="from"
+            required
             value={from}
             onChange={(e) => onChange(e)}
           />

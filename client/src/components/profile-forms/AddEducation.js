@@ -8,6 +8,7 @@ const AddEducation = ({ addEducation, history }) => {
   const [formData, setFormData] = useState({
     school: '',
     degree: '',
+    fieldofstudy: '',
     from: '',
     to: '',
     current: false,
@@ -16,9 +17,11 @@ const AddEducation = ({ addEducation, history }) => {
 
   const [toDateDisabled, toggleDisabled] = useState(false)
 
-  const { school, degree, from, to, current, description } = formData
+  const { school, degree, fieldofstudy, from, to, current, description } =
+    formData
 
-  const onChange = (e) => setFormData({ [e.target.name]: e.target.value })
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value })
 
   return (
     <Fragment>
@@ -56,13 +59,21 @@ const AddEducation = ({ addEducation, history }) => {
           />
         </div>
         <div className="form-group">
-          <input type="text" placeholder="Field Of Study" name="fieldofstudy" />
+          <input
+            type="text"
+            placeholder="* Field Of Study"
+            name="fieldofstudy"
+            value={fieldofstudy}
+            onChange={(e) => onChange(e)}
+            required
+          />
         </div>
         <div className="form-group">
           <h4>From Date</h4>
           <input
             type="date"
             name="from"
+            required
             value={from}
             onChange={(e) => onChange(e)}
           />
@@ -102,9 +113,9 @@ const AddEducation = ({ addEducation, history }) => {
           ></textarea>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
-        <a className="btn btn-light my-1" href="dashboard.html">
+        <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
-        </a>
+        </Link>
       </form>
     </Fragment>
   )
