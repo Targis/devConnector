@@ -40,11 +40,7 @@ const EditProfile = ({
       }
 
       for (const key in profile.social) {
-        if (key in profileData) profileData[key] = profile[key]
-      }
-
-      if (Array.isArray(profileData.skills)) {
-        profileData.skills = profileData.skills.join(', ')
+        if (key in profileData) profileData[key] = profile.social[key]
       }
 
       setFormData(profileData)
